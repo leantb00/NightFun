@@ -1,22 +1,22 @@
 
-.App {
+.Login {
   text-align: center;
 }
 
-.App-logo {
+.Login-logo {
   height: 40vmin;
   pointer-events: none;
   
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .Login-logo {
+    animation: Login-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-image: url(../Assets/imagemDeFundo.png); /*arquivo onde está a imagem */
+.Login-header {
+  background-image: url(../../Assets/imagemDeFundo.png); /*arquivo onde está a imagem */
   background-repeat: no-repeat;  /* para a imagem não se repetir na tela, para se ajustar ao tamanho de cada janela de monitor*/
   background-attachment: fixed; /* para a imagem não possuir rolagem, a rolagem é fixa.*/
   background-size:100%; /*Para a imagem se ajustar ao tamanho de qualquer tela tela */
@@ -32,12 +32,12 @@
   color:black;
 }
 
-.App-link {
+.Login-link {
   color: #61dafb;
   
 }
 
-@keyframes App-logo-spin {
+@keyframes Login-logo-spin {
   from {
     transform: rotate(0deg);
   }
