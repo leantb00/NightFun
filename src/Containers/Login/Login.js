@@ -6,19 +6,25 @@ import { setFacebookData } from '../../redux/reducers/login'
 import { useHistory } from "react-router-dom";
 import './Login.css';
 import { AuthContext } from '../../AuthConfig/AuthContext' 
+import api from '../../services/api'
+
 function Login() {
     const dispatch = useDispatch()
     const history = useHistory();
     const { dispatch:dispatchAuth } = React.useContext(AuthContext);
   
-    const responseFacebook = (response) => {
-      console.log(response);
-      dispatch(setFacebookData(response));
-      // setData(response);
-      // setPicture(response.picture.data.url);
-      if (response.accessToken) {
-        dispatchAuth({type:'LOGIN'})
-        history.push("/home");
+    const responseFacebook = (data) => {
+      console.log(data);
+      dispatch(setFacebookData(data));
+      if (data.accessToken) {
+        api.post("users/login/",data).then((response)=>{
+          console.log(response);
+          dispatchAuth({type:'LOGIN'})
+          history.push("/home");
+        }).catch((err) => {
+
+        })
+
       }
     } 
   return (
@@ -30,7 +36,7 @@ function Login() {
           </p>
           <FacebookLogin
             appId="573188283694881"
-            autoLoad={true}
+            // autoLoad={true}
             fields="name,email,picture"
             scope="public_profile,email"
             callback={responseFacebook}

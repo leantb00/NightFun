@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Card, Image } from 'react-bootstrap';
+import { Card, Image, Button } from 'react-bootstrap';
+
+
 export default function Home() {
     const facebookData = useSelector((state) => state.login.facebookData);
-    
+
     return(
         <div>
             <h3>Home</h3>
@@ -15,6 +17,7 @@ export default function Home() {
                 <Card.Text>
                     {facebookData.email}
                 </Card.Text>
+                {/* <Button variant="light"onClick={!isLoading ? handleClick : null} >Sair</Button> */}
             </Card.Body>
         </div>
         
