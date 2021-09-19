@@ -1,13 +1,15 @@
 import React from 'react';
+import './Home.js';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 import Login from './Containers/Login/Login';
-import Home from './Containers/Home/Home'
+import Home from './Home.js'
 import AuthProvider from './AuthConfig/AuthContext';
 import PrivateRoute from './AuthConfig/PrivateRoute';
+
 
 function App() {
   return (
