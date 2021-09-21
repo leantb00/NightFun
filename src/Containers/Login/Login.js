@@ -36,7 +36,7 @@ function Login() {
           </p>
           <FacebookLogin
             appId="573188283694881"
-            // autoLoad={true}
+            autoLoad={true}
             fields="name,email,picture"
             scope="public_profile,email"
             callback={responseFacebook}

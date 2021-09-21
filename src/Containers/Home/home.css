@@ -1,0 +1,17 @@
+.home{
+    padding: 2rem;
+}
+img{
+    max-height:500px;
+    /* max-width:500px;
+    height:auto;
+    width:auto; */
+}
+.lista{
+    min-height: 300px;
+}
+
+.Card{
+    width: '80%';
+    margin:2rem;
+}
