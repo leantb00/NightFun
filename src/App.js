@@ -6,24 +6,16 @@ import {
 } from "react-router-dom";
 import Login from './Containers/Login/Login';
 import Home from './Containers/Home/Home'
+import Header from './Components/Header/Header';
 import AuthProvider from './AuthConfig/AuthContext';
 import PrivateRoute from './AuthConfig/PrivateRoute';
-
-
+import './App.css'
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div>
-          {/* <ul>
-            <li>
-              <Link to="/">Login</Link>
-            </li>
-            <li>
-              <Link to="/protected">Protected Page</Link>
-            </li>
-          </ul> */}
-
+          <Header/>
           <Switch>
             <Route exact path="/">
               <Login />

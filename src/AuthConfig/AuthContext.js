@@ -1,8 +1,13 @@
 import React from 'react';
 
 export const AuthContext = React.createContext();
+const token = localStorage.getItem('auth-token')
+let logged=false;
+if(token !== undefined && token !== null){
+  logged = true
+}
 const initialState = {
-    signed:false
+    signed:logged
 }
 function reducer(prevState, action) {
   switch (action.type) {

@@ -18,7 +18,8 @@ function Login() {
       dispatch(setFacebookData(data));
       if (data.accessToken) {
         api.post("users/login/",data).then((response)=>{
-          console.log(response);
+          console.log("response || ", response)
+          localStorage.setItem('auth-token', response.token)
           dispatchAuth({type:'LOGIN'})
           history.push("/home");
         }).catch((err) => {
@@ -36,7 +37,6 @@ function Login() {
           </p>
           <FacebookLogin
             appId="573188283694881"
-            autoLoad={true}
             fields="name,email,picture"
             scope="public_profile,email"
             callback={responseFacebook}
