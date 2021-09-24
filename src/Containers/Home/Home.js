@@ -1,4 +1,4 @@
-import React, {Carou} from 'react';
+import React, {useEffect} from 'react';
 import './home.css';
 import { useSelector } from 'react-redux';
 import { Card, Image, Button, ButtonGroup, Carousel } from 'react-bootstrap';
@@ -6,9 +6,27 @@ import '../../Assets/audio.mp3'
 import { useState } from 'react';
 import image from "../../Assets/photo1.jpg"
 import image2 from "../../Assets/photo2.jpg"
+import { getEstablishment } from '../../services/api';
+
 export default function Home() {
     const [navigationBar, setNavigationBar] = useState('Estabelecimento');
+    const [list, setList] = useState([]);
+    // useEffect(() => {
+    //     establishment(navigationBar);
+    // }, [navigationBar])
+    useEffect(() => {
+        establishment();
+    }, [])
 
+    function establishment(){
+        getEstablishment().then((response) => {
+            console.log(response.data)
+            setList(response.data);
+        }).catch((err) => {
+            // TODO:Tratamento de Error
+            console.log("Error")
+        })
+    }
     return(
         <div>
             <Carousel>

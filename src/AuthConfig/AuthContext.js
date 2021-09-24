@@ -3,7 +3,8 @@ import React from 'react';
 export const AuthContext = React.createContext();
 const token = localStorage.getItem('auth-token')
 let logged=false;
-if(token !== undefined && token !== null){
+if(token !== 'undefined' && token !== null){
+  console.log(typeof token)
   logged = true
 }
 const initialState = {

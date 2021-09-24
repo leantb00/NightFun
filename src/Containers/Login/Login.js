@@ -18,8 +18,7 @@ function Login() {
       dispatch(setFacebookData(data));
       if (data.accessToken) {
         api.post("users/login/",data).then((response)=>{
-          console.log("response || ", response)
-          localStorage.setItem('auth-token', response.token)
+          localStorage.setItem('auth-token', response.data.token)
           dispatchAuth({type:'LOGIN'})
           history.push("/home");
         }).catch((err) => {
