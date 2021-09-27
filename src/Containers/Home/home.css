@@ -1,5 +1,5 @@
 .home{
-    padding: 2rem;
+    /* padding: 2rem */
 }
 img{
     max-height:500px;
@@ -9,9 +9,4 @@ img{
 }
 .lista{
     min-height: 300px;
-}
-
-.Card{
-    width: '80%';
-    margin:2rem;
 }

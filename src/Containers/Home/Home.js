@@ -1,27 +1,46 @@
 import React, {useEffect} from 'react';
 import './home.css';
-import { useSelector } from 'react-redux';
-import { Card, Image, Button, ButtonGroup, Carousel } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 import '../../Assets/audio.mp3'
 import { useState } from 'react';
-import image from "../../Assets/photo1.jpg"
-import image2 from "../../Assets/photo2.jpg"
-import { getEstablishment } from '../../services/api';
+import { getEstablishment, getEvents } from '../../services/api';
+import CardEstablishment from '../../Components/CardEstablishment/CardEstablishment';
+import Banner from '../../Components/Banners/Banner';
+import CardEvents from '../../Components/CardEvents/CardEvents';
+
 
 export default function Home() {
-    const [navigationBar, setNavigationBar] = useState('Estabelecimento');
-    const [list, setList] = useState([]);
-    // useEffect(() => {
-    //     establishment(navigationBar);
-    // }, [navigationBar])
+    const [navigationBar, setNavigationBar] = useState('Eventos');
+    const [listEstablishment, setListEstablishment] = useState([]);
+    const [listEvent, setListEvent] = useState([]);
     useEffect(() => {
-        establishment();
+        switch(navigationBar){
+            case 'Estabelecimento':
+                establishment();
+                break;
+            case 'Eventos':
+                events()
+                break;
+            default:
+                console.log("teste Est")
+        }
+    }, [navigationBar])
+    useEffect(() => {
+        events();
     }, [])
 
+    function events(){
+        getEvents().then((response) =>{
+            setListEvent(response.data)
+        }).catch((err) => {
+            // TODO:Tratamento de Error
+            console.log("Error")
+        })
+    }
     function establishment(){
         getEstablishment().then((response) => {
             console.log(response.data)
-            setList(response.data);
+            setListEstablishment(response.data);
         }).catch((err) => {
             // TODO:Tratamento de Error
             console.log("Error")
@@ -29,29 +48,8 @@ export default function Home() {
     }
     return(
         <div>
-            <Carousel>
-                <Carousel.Item interval={1000}>
-                    <img
-                    src={image}
-                    alt="First slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item interval={500}>
-                    <img
-                        src={image2}
-                        alt="Second slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel>
-            <div className="home text-center d-flex flex-column p-2">
+            <Banner />
+            <div className="home text-center d-flex flex-column p-5">
                 <ButtonGroup size="lg" aria-label="Basic example">
                     <Button variant="outline-secondary" onClick={() => setNavigationBar("Estabelecimento")}>
                         Estabelecimento
@@ -61,29 +59,15 @@ export default function Home() {
                     </Button>
                 </ButtonGroup>
                 <div className='lista p-10'>
-                    <Card className='Card'>
-                        <Card.Body>
-                            <Card.Title>Estabelecimento #1</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Vila Bachá 09</Card.Subtitle>
-                            <Card.Text>Lorem Impsum</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card className='Card'>
-                        <Card.Body>
-                            <Card.Title>Estabelecimento #2</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Vila Bachá 09</Card.Subtitle>
-                            <Card.Text>Lorem Impsum</Card.Text>
-                        </Card.Body>
-                    </Card>
+                    {navigationBar === "Estabelecimento" ? 
+                        listEstablishment.map((item) => {
+                            return <CardEstablishment key={item.id} data={item}/>
+                        }) :
+                        listEvent.map((item) => {
+                            return <CardEvents key={item.id} data={item} />;
+                        })
+                    }
                 </div>
-                {/* {navigationBar === 'Estabelecimento' ? (
-                <div>
-                    Estabelecimentos #1
-                </div>) : null}
-                {navigationBar === 'Eventos' ? (
-                <div>
-                    Eventos #1
-                </div>) : null} */}
             </div>
         </div>
            

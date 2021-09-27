@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthConfig/AuthContext";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import './Header.css'
-
+import logoTipoNightFun from '../../Assets/logoTipoNightFun.png'
 export default function Header() {
     const { state, dispatch } = React.useContext(AuthContext);
     function logout(){
@@ -14,7 +14,7 @@ export default function Header() {
         return(
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand href="/home">NightFun</Navbar.Brand>
+                    <Navbar.Brand href="/home"><img src={logoTipoNightFun} height={50} width={150}/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav className="me-auto">

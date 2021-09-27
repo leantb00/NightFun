@@ -1,0 +1,11 @@
+.lista{
+    min-height: 300px;
+}
+
+.Card{
+    margin:2rem;
+}
+
+.Card:hover{
+    background-color: #d1d1d1;
+}
