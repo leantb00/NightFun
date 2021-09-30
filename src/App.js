@@ -8,7 +8,8 @@ import Login from './Containers/Login/Login';
 import Home from './Containers/Home/Home'
 import AuthProvider from './AuthConfig/AuthContext';
 import PrivateRoute from './AuthConfig/PrivateRoute';
-
+//import EstablishmentDetails from './Containers/establishmentDetails/establishmentDetails';
+import EventsDetails from './Containers/eventsDetails/eventsDetails';
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
             <Route exact path="/">
               <Login />
             </Route>
-            <PrivateRoute exact path="/home" >
-              <Home/>
+            <PrivateRoute exact path="/home" >   
+              <EventsDetails/>
+              {/*<EstablishmentDetails/>*/}
             </PrivateRoute>
           </Switch>
         </div>
