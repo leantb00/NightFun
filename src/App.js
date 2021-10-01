@@ -10,6 +10,9 @@ import Header from './Components/Header/Header';
 import AuthProvider from './AuthConfig/AuthContext';
 import PrivateRoute from './AuthConfig/PrivateRoute';
 import './App.css'
+//import EstablishmentDetails from './Containers/establishmentDetails/establishmentDetails';
+import EventsDetails from './Containers/eventsDetails/eventsDetails';
+
 function App() {
   return (
     <AuthProvider>
@@ -20,8 +23,9 @@ function App() {
             <Route exact path="/">
               <Login />
             </Route>
-            <PrivateRoute exact path="/home" >
-              <Home/>
+            <PrivateRoute exact path="/home" >   
+              <EventsDetails/>
+              {/*<EstablishmentDetails/>*/}
             </PrivateRoute>
           </Switch>
         </div>
