@@ -10,9 +10,7 @@
 
     display:block
 }
-p{
-    text-align: center;
-}
+
 
 
 
@@ -52,13 +50,13 @@ img{
 
 
 
-.container {
+/* .container {
     max-width: 640px;
     margin: 30px auto;
     background: #fff;
     border-radius: 8px;
     padding: 20px;
-}
+} */
 
 .comment {
     display: block;
@@ -72,7 +70,7 @@ img{
 }
 
 
-.container textarea {
+/* .container textarea {
     width: 100%;
     border: none;
     background: #E8E8E8;
@@ -82,7 +80,7 @@ img{
     border-bottom: 2px solid #016BA8;
     transition: all 0.5s;
     margin-top: 15px;
-}
+} */
 
 button.primaryContained {
     background: #016ba8;

@@ -10,8 +10,9 @@ import Header from './Components/Header/Header';
 import AuthProvider from './AuthConfig/AuthContext';
 import PrivateRoute from './AuthConfig/PrivateRoute';
 import './App.css'
-//import EstablishmentDetails from './Containers/establishmentDetails/establishmentDetails';
+import EstablishmentDetails from './Containers/establishmentDetails/establishmentDetails';
 import EventsDetails from './Containers/eventsDetails/eventsDetails';
+import image1 from "./Assets/logoTipoNightFun.png"
 
 function App() {
   return (
@@ -24,10 +25,17 @@ function App() {
               <Login />
             </Route>
             <PrivateRoute exact path="/home" >   
+              <Home/>
+            </PrivateRoute>
+            <PrivateRoute exact path="/events" >   
               <EventsDetails/>
-              {/*<EstablishmentDetails/>*/}
+            </PrivateRoute>
+            <PrivateRoute exact path="/establishment" >   
+              <EstablishmentDetails/>
             </PrivateRoute>
           </Switch>
+          <hr></hr>
+          <div className="footer"><img className="image1" src={image1} ></img></div>
         </div>
       </Router>
     </AuthProvider>

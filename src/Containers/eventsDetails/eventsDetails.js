@@ -101,7 +101,6 @@ export default function EventsDetails () {
             <hr></hr>
             
             
-            <div className='div' className="footer"><img className="image1" src={image0} ></img></div>
         </div>
            
     )     
