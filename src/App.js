@@ -30,7 +30,7 @@ function App() {
             <PrivateRoute exact path="/events" >   
               <EventsDetails/>
             </PrivateRoute>
-            <PrivateRoute exact path="/establishment" >   
+            <PrivateRoute path="/establishment/:id">   
               <EstablishmentDetails/>
             </PrivateRoute>
           </Switch>

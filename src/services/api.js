@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://serene-hamlet-41207.herokuapp.com/api/",
-  // baseURL: "http://127.0.0.1:8000/api/",
+  // baseURL: "https://serene-hamlet-41207.herokuapp.com/api/",
+  baseURL: "http://127.0.0.1:8000/api/",
 });
 
 function getEstablishment() {
@@ -10,6 +10,13 @@ function getEstablishment() {
   let auth = "Token " + token
   
   return api.get("establishment/",{headers:{Authorization:auth}})
+}
+
+function getEstablishmentbyId(id) {
+  let token = localStorage.getItem('auth-token')
+  let auth = "Token " + token;
+  
+  return api.get("establishment/"+id,{headers:{Authorization:auth}})
 }
 
 function getEvents() {
@@ -21,6 +28,7 @@ function getEvents() {
 
 export {
   getEstablishment,
+  getEstablishmentbyId,
   getEvents
 }
 
