@@ -26,10 +26,18 @@ function getEvents() {
   return api.get("events/",{headers:{Authorization:auth}})
 }
 
+function postComment(data) {
+  let token = localStorage.getItem('auth-token')
+  let auth = "Token " + token;
+  
+  return api.post("establishment/add_comment/", data, {headers:{Authorization:auth}})
+}
+
 export {
   getEstablishment,
   getEstablishmentbyId,
-  getEvents
+  getEvents,
+  postComment
 }
 
 export default api;

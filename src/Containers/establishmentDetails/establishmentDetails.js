@@ -1,25 +1,41 @@
 import React, {useEffect, useState} from 'react';
 import './establishmentDetails.css'
 import { useSelector } from 'react-redux';
-import { Card, Row, Col, ListGroup, Container } from 'react-bootstrap';  
+import { Card, Row, Col, ListGroup, Form, Button } from 'react-bootstrap';  
 import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import '../../Assets/audio.mp3'
-import { getEstablishmentbyId } from '../../services/api';
+import { getEstablishmentbyId, postComment } from '../../services/api';
 import { useParams } from 'react-router';
 import moment from 'moment';
 
 export default function EstablishmentDetails (props) {
-    const [establishment, setEstablishment] = useState(null);   
+    const [establishment, setEstablishment] = useState(null);  
+    const [newComment, setNewComments] = useState({text:''});   
+    const [infocomment, setInfocomment]= useState({comment:false});   
     const { id } = useParams();
     useEffect(()=>{
-        
         console.log("id ||", id);
+        loadPage()
+    }, []);
+    function loadPage() {
         getEstablishmentbyId(id).then((response) => {
             setEstablishment(response.data);
         }).catch((err)=> {
 
         });
-    }, []);
+    }
+
+    function sendComment(){
+        let comment = newComment
+        comment.establishment=id
+        postComment(comment).then((response) =>{
+            setNewComments({text:''});
+            loadPage()
+        }).catch((err)=> {
+            console.log("err || ", err)
+        });
+
+    }
     if(establishment !== null){
         return(
             <div>
@@ -51,6 +67,25 @@ export default function EstablishmentDetails (props) {
                     <Col xs={9}>
                         <div>
                             {establishment.comment_establishment.length} Comentarios
+                            <Form>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Escreva seu Comentario</Form.Label>
+                                    <Form.Control 
+                                        onFocus={() => setInfocomment({comment:true})}  
+                                        as="textarea" 
+                                        rows={infocomment.comment ? 3 : 1} 
+                                        value={newComment.text} onChange={(event)=>{setNewComments({...newComment,text:event.target.value})}} 
+                                    />
+                                    <FiThumbsUp style={newComment.linked ? {fill:'greenyellow'}:{}} size={30} onClick={() =>{setNewComments({...newComment,linked:true})}}/>
+                                    <FiThumbsDown style={!newComment.linked &&  newComment.linked !== undefined ? {fill:'red'}:{}} size={30} onClick={() =>{setNewComments({...newComment,linked:false})}}/>
+                                </Form.Group>
+                                {infocomment.comment ? <Button variant="primary" onClick={() => sendComment()}>
+                                    Enviar
+                                </Button>: null}
+                                {infocomment.comment ? <Button variant="danger" onClick={() =>{setInfocomment({comment:false});setNewComments('')}}>
+                                    Cancelar
+                                </Button>: null}
+                            </Form>
                             {establishment.comment_establishment.map((comment)=>{
                                 return(
                                     <Card border="light" className='CommentCard' onClick={()=> {console.log("Clicked")}}>
