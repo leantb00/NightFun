@@ -19,11 +19,25 @@ function getEstablishmentbyId(id) {
   return api.get("establishment/"+id,{headers:{Authorization:auth}})
 }
 
+function getEstablishmentRank() {
+  let token = localStorage.getItem('auth-token')
+  let auth = "Token " + token;
+  
+  return api.get("establishment/rank_establishment/",{headers:{Authorization:auth}})
+}
+
 function getEvents() {
   let token = localStorage.getItem('auth-token')
   let auth = "Token " + token
   
   return api.get("events/",{headers:{Authorization:auth}})
+}
+
+function getEventsbyId(id) {
+  let token = localStorage.getItem('auth-token')
+  let auth = "Token " + token;
+  
+  return api.get("events/"+id,{headers:{Authorization:auth}})
 }
 
 function postComment(data) {
@@ -37,7 +51,10 @@ export {
   getEstablishment,
   getEstablishmentbyId,
   getEvents,
-  postComment
+  getEventsbyId,
+  postComment,
+  getEstablishmentRank,
+  
 }
 
 export default api;

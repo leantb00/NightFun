@@ -30,7 +30,7 @@ function Login() {
       }
     }
     const logIn = () => {
-      localStorage.setItem('auth-token', "fa8d29a5d384dc23dd71170d581d6fffa4f342bf")
+      localStorage.setItem('auth-token', "9af42d58fcfc32a322621b4cbbe62e0b7297ade9")
       dispatchAuth({type:'LOGIN'})
       history.push("/home");
     }
@@ -41,9 +41,9 @@ function Login() {
           <p>
             Seja Bem Vindo Ao NightFun.
           </p>
-          <Button variant="danger" onClick={() =>{logIn()}}>
+          {/* <Button variant="danger" onClick={() =>{logIn()}}>
               Logar sem Facebook
-          </Button>
+          </Button> */}
           <FacebookLogin
             appId="573188283694881"
             fields="name,email,picture"

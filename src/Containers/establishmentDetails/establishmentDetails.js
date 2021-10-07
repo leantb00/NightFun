@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux';
 import { Card, Row, Col, ListGroup, Form, Button } from 'react-bootstrap';  
 import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import '../../Assets/audio.mp3'
-import { getEstablishmentbyId, postComment } from '../../services/api';
+import { getEstablishmentbyId, postComment, getEstablishmentRank } from '../../services/api';
 import { useParams } from 'react-router';
 import moment from 'moment';
 
 export default function EstablishmentDetails (props) {
     const [establishment, setEstablishment] = useState(null);  
+    const [establishmentRank, setEstablishmentRank] = useState(null);  
     const [newComment, setNewComments] = useState({text:''});   
     const [infocomment, setInfocomment]= useState({comment:false});   
     const { id } = useParams();
@@ -18,6 +19,9 @@ export default function EstablishmentDetails (props) {
         loadPage()
     }, []);
     function loadPage() {
+        getEstablishmentRank().then((response) => setEstablishmentRank(response.data.data));
+
+
         getEstablishmentbyId(id).then((response) => {
             setEstablishment(response.data);
         }).catch((err)=> {
@@ -76,20 +80,28 @@ export default function EstablishmentDetails (props) {
                                         rows={infocomment.comment ? 3 : 1} 
                                         value={newComment.text} onChange={(event)=>{setNewComments({...newComment,text:event.target.value})}} 
                                     />
-                                    <FiThumbsUp style={newComment.linked ? {fill:'greenyellow'}:{}} size={30} onClick={() =>{setNewComments({...newComment,linked:true})}}/>
-                                    <FiThumbsDown style={!newComment.linked &&  newComment.linked !== undefined ? {fill:'red'}:{}} size={30} onClick={() =>{setNewComments({...newComment,linked:false})}}/>
+                                    {infocomment.comment ? <div>
+                                        <div>
+                                            <FiThumbsUp style={newComment.linked ? {fill:'greenyellow'}:{}} size={30} onClick={() =>{setNewComments({...newComment,linked:true})}}/>
+                                            <FiThumbsDown style={!newComment.linked &&  newComment.linked !== undefined ? {fill:'red'}:{}} size={30} onClick={() =>{setNewComments({...newComment,linked:false})}}/>
+                                        </div>
+                                        <div>
+                                            <Button variant="primary" onClick={() => sendComment()}>
+                                                Enviar
+                                            </Button>
+                                            <Button variant="danger" onClick={() =>{setInfocomment({comment:false});setNewComments('')}}>
+                                                Cancelar
+                                            </Button>
+                                        </div>
+                                    </div> : null}
+
                                 </Form.Group>
-                                {infocomment.comment ? <Button variant="primary" onClick={() => sendComment()}>
-                                    Enviar
-                                </Button>: null}
-                                {infocomment.comment ? <Button variant="danger" onClick={() =>{setInfocomment({comment:false});setNewComments('')}}>
-                                    Cancelar
-                                </Button>: null}
+                                
                             </Form>
                             {establishment.comment_establishment.map((comment)=>{
                                 return(
                                     <Card border="light" className='CommentCard' onClick={()=> {console.log("Clicked")}}>
-                                        <Card.Img className='CommentImage' src={"https://img2.gratispng.com/20180627/rrb/kisspng-copyleft-creative-commons-free-art-license-copyright-5b33fe5710be12.9395069815301341030686.jpg"} />
+                                        <Card.Img className='CommentImage' src={comment.user.picture} />
                                         <Card.Body>
                                             <Card.Title>{comment.user.full_name} - {moment(comment.createAt).fromNow()}</Card.Title>
                                             <Card.Text className="CommentText">{comment.text}</Card.Text>
@@ -104,6 +116,14 @@ export default function EstablishmentDetails (props) {
                     <Col>
                         <div>
                             Ranking de Estabelecimentos
+                            <ListGroup as="ol" numbered>
+                            {establishmentRank.map((item, index) => {
+                                return(
+                                    <ListGroup.Item as="li">{index+1}. {item.name} - {item.liked}</ListGroup.Item>
+                                )
+                            })}
+                            </ListGroup>
+
                         </div>
                     </Col>
                 </Row>

@@ -27,7 +27,7 @@ function App() {
             <PrivateRoute exact path="/home" >   
               <Home/>
             </PrivateRoute>
-            <PrivateRoute exact path="/events" >   
+            <PrivateRoute path="/events/:id" >   
               <EventsDetails/>
             </PrivateRoute>
             <PrivateRoute path="/establishment/:id">   
