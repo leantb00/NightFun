@@ -13,6 +13,7 @@ import image6 from "../../Assets/photo6.png"
 import { getEventsbyId } from '../../services/api';
 import CardEstablishment from '../../Components/CardEstablishment/CardEstablishment';
 
+
 export default function EventsDetails () {
     const [event, setEvent] = useState(null);   
     const { id } = useParams();
@@ -24,8 +25,24 @@ export default function EventsDetails () {
         });
     },[id])
 
+    const [callCupom, setCupom] = useState({
+            cupom: "GERE O SEU CUPOM DE ENTRADA"
+        })
+        const {cupom} = callCupom
+    
+        const getCupom = () => setCupom(numberCupom => ({
+            ...numberCupom,
+            cupom: 'xxxxxxxx'
+             
+                
+            
+            
+        }))
 
-    return(
+
+      
+    
+return(
         <div>
             <Carousel>
                 {event !== null && event.banners_events.map((item, index)=>{
@@ -43,20 +60,27 @@ export default function EventsDetails () {
                 <Card.Body>
                     <Card.Text>
                         {event.description}
+                        
                     </Card.Text>
                     <Card.Text>
                         {event.address}
+                        
                     </Card.Text>
                     <Card >
                         <Card.Header>Estabelecimento</Card.Header>
                         {event.establishment ? <CardEstablishment data={event.establishment}/> : null}
                     </Card>
+                    <div className="callCupom"><div className="card"><h1 className="fa fa-comments fa-blink"> { `${cupom}`  }  </h1> </div>
                     
+                    <Button type="button" variant="btn btn-primary btn-sm" onClick={ getCupom }  >
+                        gere o cupom
+                    </Button>
+                        </div>
                 </Card.Body>
             </Card> : null}
+            
         </div>
-           
+          
     )     
         
-
-}
+   }

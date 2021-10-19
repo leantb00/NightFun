@@ -109,3 +109,38 @@ button.primaryContained:hover {
 .div{
     border-bottom: 100px;
 }
+.callCupom{
+    text-align: center;
+    background:grey;
+    color:grey;
+    padding: 5px 5px;
+    border:gray;
+    margin-top: 0px;
+    cursor: pointer;
+    text-transform:lowercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+    transition: 1s all;
+    font-size: 5px;
+    border-radius: 10px;
+    
+}
+
+.button0{
+    background:grey;
+    
+    border-radius: 10px;
+}
+
+@keyframes fa-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+.fa-blink {
+  -webkit-animation: fa-blink .75s linear infinite;
+  -moz-animation: fa-blink .75s linear infinite;
+  -ms-animation: fa-blink .75s linear infinite;
+  -o-animation: fa-blink .75s linear infinite;
+  animation: fa-blink .75s linear infinite;
+}

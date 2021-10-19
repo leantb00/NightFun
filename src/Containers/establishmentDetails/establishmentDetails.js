@@ -127,7 +127,7 @@ export default function EstablishmentDetails (props) {
                         </div>
                     </Col>
                 </Row>
-    
+                
             </div>
         )     
     } else {
