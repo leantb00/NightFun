@@ -13,7 +13,10 @@ export default function EstablishmentDetails (props) {
     const [establishmentRank, setEstablishmentRank] = useState(null);  
     const [newComment, setNewComments] = useState({text:''});   
     const [infocomment, setInfocomment]= useState({comment:false});   
+    
+
     const { id } = useParams();
+
     useEffect(()=>{
         console.log("id ||", id);
         loadPage()
@@ -57,6 +60,15 @@ export default function EstablishmentDetails (props) {
                         <Card.Text>
                             Telefone: {establishment.phone}
                         </Card.Text>
+                        {/* <Card.Text>
+                            <Button onClick={() => askTicket()} disabled={ticket ? true : false}>Gerar Cupom</Button>
+                            {ticket ? (
+                                <Card>
+                                    <Card.Header> Cupom </Card.Header>
+                                    <Card.Text> {ticket.code} - Valido até {ticket.expirationDate}</Card.Text>
+                                </Card>
+                            ) : null}
+                        </Card.Text> */}
                         <Card>
                             <Card.Header as="h7">Horarios de Abertura</Card.Header>
                             <ListGroup variant="flush">
@@ -127,7 +139,7 @@ export default function EstablishmentDetails (props) {
                         </div>
                     </Col>
                 </Row>
-                
+    
             </div>
         )     
     } else {

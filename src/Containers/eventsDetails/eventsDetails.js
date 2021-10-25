@@ -10,12 +10,13 @@ import image3 from "../../Assets/photo3.png"
 import image4 from "../../Assets/photo4.png"
 import image5 from "../../Assets/photo5.png"
 import image6 from "../../Assets/photo6.png"
-import { getEventsbyId } from '../../services/api';
+import { getEventsbyId, generateTicket } from '../../services/api';
 import CardEstablishment from '../../Components/CardEstablishment/CardEstablishment';
 
 
 export default function EventsDetails () {
-    const [event, setEvent] = useState(null);   
+    const [event, setEvent] = useState(null);  
+    const [ticket, setTicket]= useState(null);    
     const { id } = useParams();
     useEffect(()=> {
         getEventsbyId(id).then((response) => {
@@ -25,22 +26,14 @@ export default function EventsDetails () {
         });
     },[id])
 
-    const [callCupom, setCupom] = useState({
-            cupom: "GERE O SEU CUPOM DE ENTRADA"
+    function askTicket(){
+        generateTicket(id).then((response) => {
+            let data = response.data;
+            setTicket(data);
+        }).catch((err)=>{
+            console.log("err || ", err)
         })
-        const {cupom} = callCupom
-    
-        const getCupom = () => setCupom(numberCupom => ({
-            ...numberCupom,
-            cupom: 'xxxxxxxx'
-             
-                
-            
-            
-        }))
-
-
-      
+    }
     
 return(
         <div>
@@ -70,12 +63,17 @@ return(
                         <Card.Header>Estabelecimento</Card.Header>
                         {event.establishment ? <CardEstablishment data={event.establishment}/> : null}
                     </Card>
-                    <div className="callCupom"><div className="card"><h1 className="fa fa-comments fa-blink"> { `${cupom}`  }  </h1> </div>
-                    
-                    <Button type="button" variant="btn btn-primary btn-sm" onClick={ getCupom }  >
-                        gere o cupom
-                    </Button>
+                    {event.establishment.cupom ?(
+                        <div className="callCupom">
+                            <div className="card">
+                                <h1 className="fa fa-comments fa-blink"> { `${ ticket ? ticket.code : "Gere seu Cupom Aqui"}`  }  </h1> 
+                            </div>
+                            <Button disabled={ticket} type="button" variant="btn btn-primary btn-sm" onClick={ () => askTicket() }  >
+                                {!ticket ? "Gere Cupom" : "Expira ás " + ticket.expirationDate}
+                            </Button>
                         </div>
+                    ) :null}
+                    
                 </Card.Body>
             </Card> : null}
             

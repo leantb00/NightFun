@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://serene-hamlet-41207.herokuapp.com/api/",
-  // baseURL: "http://127.0.0.1:8000/api/",
+  // baseURL: "https://serene-hamlet-41207.herokuapp.com/api/",
+  baseURL: "http://127.0.0.1:8000/api/",
 });
 
 function getEstablishment() {
@@ -47,6 +47,20 @@ function postComment(data) {
   return api.post("establishment/add_comment/", data, {headers:{Authorization:auth}})
 }
 
+function generateTicket(id) {
+  let token = localStorage.getItem('auth-token')
+  let auth = "Token " + token;
+  
+  return api.get("events/generate_ticket/?event_id=" + id, {headers:{Authorization:auth}})
+}
+
+function getBanners() {
+  let token = localStorage.getItem('auth-token')
+  let auth = "Token " + token;
+  
+  return api.get("banners", {headers:{Authorization:auth}})
+}
+
 export {
   getEstablishment,
   getEstablishmentbyId,
@@ -54,6 +68,8 @@ export {
   getEventsbyId,
   postComment,
   getEstablishmentRank,
+  generateTicket,
+  getBanners,
   
 }
 
