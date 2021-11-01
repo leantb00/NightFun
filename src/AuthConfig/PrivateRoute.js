@@ -7,21 +7,17 @@ import { AuthContext } from './AuthContext';
 export default function PrivateRoute({ children, ...rest }) {
     const { state } = React.useContext(AuthContext);
     console.log('STATE || ',state);
-    return (
-      <Route
-        {...rest}
-        render={({ location }) =>
-        state.signed ? (
-            children
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/",
-                state: { from: location }
-              }}
-            />
-          )
-        }
-      />
-    );
+    
+    if(state.signed){
+      return (
+        <Route
+          {...rest}
+          render={({ location }) =>
+              children
+          }
+        />
+      );
+    } else {
+       <Redirect to="/" />
+    }
   }
