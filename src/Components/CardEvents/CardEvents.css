@@ -3,10 +3,17 @@
 }
 
 .Card{
-    margin:2rem;
+    
     display: flex;
     flex: 1 1 auto;
     flex-direction: row !important;
+    background-image: url(../../Assets/photo3.png);
+   
+    border-radius: 5px;
+
+ height:200px;   
+ width: 200px;
+ width:auto;
 }
 .CardImg{
     max-width: 200px;
@@ -16,3 +23,4 @@
 .Card:hover{
     background-color: #d1d1d1;
 }
+

@@ -38,13 +38,22 @@ function Login() {
       <div className="Login">
         <header className="Login-header">
           <img src={logo} className="Login-logo" alt="logo" />
-          <p>
-            Seja Bem Vindo Ao NightFun.
-          </p>
+          
+         <span className="slow">Seja Bem Vindo Ao NightFun! A Plataforma Que Divulga</span>
+<span className="slow">Eventos Festivos Na Sua Região E Ainda</span>
+<span className="slow">Disponibiliza Cupons De Descontos </span>
+<span className="slow">Na Compra Do Ingresso</span>
+
           {/* <Button variant="danger" onClick={() =>{logIn()}}>
               Logar sem Facebook
           </Button> */}
-          <FacebookLogin
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+          <FacebookLogin 
             appId="573188283694881"
             fields="name,email,picture"
             scope="public_profile,email"

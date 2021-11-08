@@ -35,6 +35,8 @@ export default function EventsDetails () {
         })
     }
     
+
+    
 return(
         <div>
             <Carousel>
@@ -59,14 +61,14 @@ return(
                         {event.address}
                         
                     </Card.Text>
-                    <Card >
-                        <Card.Header>Estabelecimento</Card.Header>
-                        {event.establishment ? <CardEstablishment data={event.establishment}/> : null}
-                    </Card>
+                    <div className="dimension">
+                        <div className="center">Estabelecimento</div>
+                        {event.establishment ? <CardEstablishment   data={event.establishment}/> : null}
+                    </div>
                     {event.establishment.cupom ?(
                         <div className="callCupom">
                             <div className="card">
-                                <h1 className="fa fa-comments fa-blink"> { `${ ticket ? ticket.code : "Gere seu Cupom Aqui"}`  }  </h1> 
+                                <h1 className="fa fa-comments fa-blink"> { `${ ticket ? ticket.code : "GERE SEU CUPOM AQUI!"}`  }  </h1> 
                             </div>
                             <Button disabled={ticket} type="button" variant="btn btn-primary btn-sm" onClick={ () => askTicket() }  >
                                 {!ticket ? "Gere Cupom" : "Expira ás " + ticket.expirationDate}

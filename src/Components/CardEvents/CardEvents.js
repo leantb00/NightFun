@@ -13,16 +13,18 @@ export default function CardEvents(data) {
     } 
 
     return(
-        <Card className='Card' onClick={()=> {goToDetails()}}>
-            <Card.Img className='CardImg' src={event.image_url} alt={event.description} />
-            <Card.Body>
-                <Card.Title>{event.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{event.description}</Card.Subtitle>
-                <Card.Text>{address ? address : null}</Card.Text>
+        <Card.Body className='Card' onClick={()=> {goToDetails()}}>
+           &nbsp;
+         
+            <Card.Body  >
+                &nbsp;
+                <Card.Title className="CardDescription">{event.title}</Card.Title>
+                <Card.Subtitle className="CardDescription">{event.description}</Card.Subtitle>
+                <Card.Text className="CardDescription">{address ? address : null}</Card.Text>
             </Card.Body>
             {/* <Card.Body>
                 
             </Card.Body> */}
-        </Card>
+        </Card.Body>
     )
 }

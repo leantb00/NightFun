@@ -34,7 +34,6 @@ function App() {
               <EstablishmentDetails/>
             </PrivateRoute>
           </Switch>
-          <hr></hr>
           <div className="footer"><img className="image1" src={image1} ></img></div>
         </div>
       </Router>
