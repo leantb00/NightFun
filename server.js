@@ -3,10 +3,7 @@ const {resolve, join} =require('path');
 const app = express();
 
 app.use('/', express.static(resolve(__dirname,'./build')))        //o express vai observar um diretório e vai servidr os arquivos que estão dentro do diretorio dentro dessa rota '/'.
-
-app.get('*', (req, res) => {                       
-    res.sendFile(resolve(__dirname, './public', 'index.html'));                               
-  });
+// app.use('*', express.static(resolve(__dirname,'./build')))
 app.listen(process.env.PORT || 3000,(err) =>{
    if  (err){
        return console.log(err);

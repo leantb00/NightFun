@@ -4,7 +4,10 @@ import { AuthContext } from "../../AuthConfig/AuthContext";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import './Header.css'
 import logoTipoNightFun from '../../Assets/logoTipoNightFun.png'
+import { useHistory } from "react-router-dom"
+
 export default function Header() {
+    let history = useHistory()
     const { state, dispatch } = React.useContext(AuthContext);
     function logout(){
         localStorage.removeItem("auth-token")
@@ -18,7 +21,7 @@ export default function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav className="me-auto">
-                            <Nav.Link href="/home">Home</Nav.Link>
+                            <Nav.Link onClick={() => {history.push("/home")}}>Home</Nav.Link>
                             <Nav.Link href="/" onClick={() => logout()}>Sair</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
