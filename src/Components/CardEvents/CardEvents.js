@@ -11,20 +11,16 @@ export default function CardEvents(data) {
     function goToDetails(){
         history.push("/events/"+event.id);
     } 
-
     return(
-        <Card.Body className='Card' onClick={()=> {goToDetails()}}>
-           &nbsp;
-         
-            <Card.Body  >
-                &nbsp;
-                <Card.Title className="CardDescription">{event.title}</Card.Title>
-                <Card.Subtitle className="CardDescription">{event.description}</Card.Subtitle>
-                <Card.Text className="CardDescription">{address ? address : null}</Card.Text>
-            </Card.Body>
-            {/* <Card.Body>
-                
-            </Card.Body> */}
-        </Card.Body>
+        <Card className='Card' onClick={()=> {goToDetails()}}>
+            <Card.Img src={event.banners_events ? event.banners_events.length > 0  ? event.banners_events[0].image_url : null : null} alt="Card image" />
+            <Card.ImgOverlay>
+                <Card.Body className='CardTextEvents'>
+                    <Card.Title>{event.title}</Card.Title>
+                    <Card.Subtitle>{event.description}</Card.Subtitle>
+                    <Card.Text>{address ? address : null}</Card.Text>
+                </Card.Body>
+            </Card.ImgOverlay>
+        </Card>
     )
 }

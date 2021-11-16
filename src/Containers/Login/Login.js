@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FacebookLogin from 'react-facebook-login';
 import logo from '../../Assets/logoTipoNightFun.png';
 import { useDispatch } from 'react-redux'
@@ -8,8 +8,10 @@ import './Login.css';
 import { AuthContext } from '../../AuthConfig/AuthContext' 
 import api from '../../services/api'
 import {Button} from 'react-bootstrap';
+import LoginModal from '../../Components/LoginModal/loginModal';
 
 function Login() {
+    const [loginModalVisible, setLoginModalVisible] = useState(false);
     const dispatch = useDispatch()
     const history = useHistory();
     const { dispatch:dispatchAuth } = React.useContext(AuthContext);
@@ -44,9 +46,9 @@ function Login() {
 <span className="slow">Disponibiliza Cupons De Descontos </span>
 <span className="slow">Na Compra Do Ingresso</span>
 
-          {/* <Button variant="danger" onClick={() =>{logIn()}}>
+          <Button variant="danger" onClick={() =>{setLoginModalVisible(true)}}>
               Logar sem Facebook
-          </Button> */}
+          </Button>
           &nbsp;
           &nbsp;
           &nbsp;
@@ -60,6 +62,8 @@ function Login() {
             callback={responseFacebook}
             icon="fa-facebook" 
           />
+          
+          <LoginModal show={loginModalVisible} onHide={() => setLoginModalVisible(false)} />
         </header>
       </div>
     );

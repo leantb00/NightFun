@@ -8,7 +8,6 @@ import CardEstablishment from '../../Components/CardEstablishment/CardEstablishm
 import Banner from '../../Components/Banners/Banner';
 import CardEvents from '../../Components/CardEvents/CardEvents';
 
-
 export default function Home() {
     const [navigationBar, setNavigationBar] = useState('Eventos');
     const [listEstablishment, setListEstablishment] = useState([]);

@@ -3,23 +3,19 @@
 }
 
 .Card{
-    
+    margin:2rem;
     display: flex;
     flex: 1 1 auto;
     flex-direction: row !important;
-    background-image: url(../../Assets/photo3.png);
-   
-    border-radius: 5px;
-
- height:200px;   
- width: 200px;
- width:auto;
 }
 .CardImg{
     max-width: 200px;
     max-height: "100%";
 }
-
+.CardTextEvents{
+    color:black;
+    text-shadow: 0 1px 4px white
+}
 .Card:hover{
     background-color: #d1d1d1;
 }
