@@ -65,6 +65,7 @@ return(
                     <div className="center">Estabelecimento</div>
                     {event.establishment ? <CardEstablishment   data={event.establishment}/> : null}
                         </div>
+                  
                     {event.establishment.cupom ?(
                         <div className="callCupom">
                             <div className="card">
