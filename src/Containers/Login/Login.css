@@ -35,9 +35,9 @@
 }
 .slow {
   
-  text-shadow: -1px 0 black, 0 1px black,
-      1px 0 black, 0 -1px black;
-  color:#4169E1;
+  text-shadow: -2px 0 black, 0 0px black,
+      1px 0 black, 0 -2px black;
+  color:white;
   font-family: 'Times New Roman';
   overflow: hidden; /* Garante que o conteúdo não seja revelado até a animação */
   white-space: nowrap; /* Mantém o conteúdo em uma única linha */

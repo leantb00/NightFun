@@ -45,15 +45,15 @@ function Login() {
 <span className="slow">Eventos Festivos Na Sua Região E Ainda</span>
 <span className="slow">Disponibiliza Cupons De Descontos </span>
 <span className="slow">Na Compra Do Ingresso</span>
-
+          &nbsp;
+          &nbsp;
+          &nbsp;
+         
           <Button variant="danger" onClick={() =>{setLoginModalVisible(true)}}>
               Logar sem Facebook
           </Button>
-          &nbsp;
-          &nbsp;
-          &nbsp;
-          &nbsp;
-          &nbsp;
+        
+          
 
           <FacebookLogin 
             appId="573188283694881"

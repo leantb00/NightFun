@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -13,7 +14,7 @@ import './App.css'
 import EstablishmentDetails from './Containers/establishmentDetails/establishmentDetails';
 import EventsDetails from './Containers/eventsDetails/eventsDetails';
 import image1 from "./Assets/logoTipoNightFun.png"
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <AuthProvider>

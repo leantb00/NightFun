@@ -54,17 +54,17 @@ return(
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        {event.description}
+                   {event.description}
                         
                     </Card.Text>
-                    <Card.Text>
-                        {event.address}
+                   <Card.Text>
+                    {event.address}
                         
                     </Card.Text>
                     <div className="dimension">
-                        <div className="center">Estabelecimento</div>
-                        {event.establishment ? <CardEstablishment   data={event.establishment}/> : null}
-                    </div>
+                    <div className="center">Estabelecimento</div>
+                    {event.establishment ? <CardEstablishment   data={event.establishment}/> : null}
+                        </div>
                     {event.establishment.cupom ?(
                         <div className="callCupom">
                             <div className="card">
