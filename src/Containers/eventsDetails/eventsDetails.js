@@ -61,10 +61,10 @@ return(
                         {event.address}
                         
                     </Card.Text>
-                    <div className="dimension">
-                        <div className="center">Estabelecimento</div>
-                        {event.establishment ? <CardEstablishment   data={event.establishment}/> : null}
-                    </div>
+                    <Card >
+                        <Card.Header>Estabelecimento</Card.Header>
+                        {event.establishment ? <CardEstablishment data={event.establishment}/> : null}
+                    </Card>
                     {event.establishment.cupom ?(
                         <div className="callCupom">
                             <div className="card">

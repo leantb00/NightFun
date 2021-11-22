@@ -1,4 +1,4 @@
-import {Modal, Form, Button} from 'react-bootstrap';
+import {Modal, Form, Button, Alert} from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 
 export default function LoginModal(props) {
@@ -19,7 +19,7 @@ export default function LoginModal(props) {
         <Modal.Body>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>Usuário</Form.Label>
                     <Form.Control type="email"
                      placeholder="Usuario"  
                      value={username} 
@@ -43,7 +43,12 @@ export default function LoginModal(props) {
             </Form>
         </Modal.Body>
         <Modal.Footer>
-            <Button variant="primary" onClick={props.onSubmit}>
+          {props.messageError ? (
+            <Alert variant={'danger'}>
+              Usuário ou Senha Incorreta ou Usuário Inexistente.
+            </Alert>
+          ) : null}
+            <Button variant="primary" onClick={() => props.submitOn(username, password)}>
                 Enviar
             </Button>
         </Modal.Footer>
