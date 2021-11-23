@@ -21,19 +21,20 @@ export default function Banner() {
     } 
 
     return (
-        <Carousel>
+        <Carousel variant="dark">
             {banners.map((item)=>{
                 return(
-                    <Carousel.Item interval={1000} onClick={() => goToDetails(item.event)}>
+                    <Carousel.Item interval={1000} onClick={() => goToDetails(item.event.id)}>
                         <img
                         src={item.image_url}
                         alt={item.id}
-                        width="200" height="150"
+                        // width="200" 
+                        class="center"
+                        height="300"
                         />
-                        {/* <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption> */}
+                        <Carousel.Caption>
+                            <h3 class="banner-text">{item.event.title}</h3>
+                        </Carousel.Caption>
                     </Carousel.Item>
                 )
             })}

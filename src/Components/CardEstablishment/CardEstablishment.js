@@ -16,14 +16,12 @@ export default function CardEstablishment(data) {
     } 
 
     return(
-        <Card className="card mb-3"  onClick={()=> goToDetails()}>
-          <Card.Header>
+        <Card className="Card"  onClick={()=> goToDetails()}>
             <Card.Body>
-                <Card.Title className="CardDescription">{establishment.name}</Card.Title>
-                <Card.Subtitle className="CardDescription">{address ? address : null}</Card.Subtitle>
-                <Card.Body className="CardDescription">{establishment.description}</Card.Body>
+                <Card.Title>{establishment.name}</Card.Title>
+                <Card.Subtitle>{address ? address : null}</Card.Subtitle>
+                <Card.Body>{establishment.description}</Card.Body>
             </Card.Body>
-          </Card.Header>
         </Card>
     )
 }

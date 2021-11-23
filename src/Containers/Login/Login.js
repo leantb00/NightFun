@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import FacebookLogin from 'react-facebook-login';
 import logo from '../../Assets/logoTipoNightFun.png';
 import { useDispatch } from 'react-redux'
@@ -13,10 +13,19 @@ import LoginModal from '../../Components/LoginModal/loginModal';
 function Login() {
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [messageError, setMessageError] = useState(false);
+    const { state } = React.useContext(AuthContext);
     const dispatch = useDispatch()
     const history = useHistory();
     const { dispatch:dispatchAuth } = React.useContext(AuthContext);
   
+
+    useEffect(()=>{
+      
+      if(state.signed){
+        history.push("/home");
+      }
+    }, [])
+
     const responseFacebook = (data) => {
       console.log(data);
       dispatch(setFacebookData(data));
