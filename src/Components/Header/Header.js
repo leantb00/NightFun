@@ -17,7 +17,7 @@ export default function Header() {
         return(
             <Navbar bg="light" expand="md">
                 <Container>
-                    <Navbar.Brand href="/home"><img src={logoTipoNightFun} height={50} width={150}/></Navbar.Brand>
+                    <Navbar.Brand onClick={() => {history.push("/home")}}><img src={logoTipoNightFun} height={50} width={150}/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav className="me-auto">
